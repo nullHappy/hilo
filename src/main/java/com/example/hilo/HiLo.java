@@ -30,8 +30,8 @@ public class HiLo {
                 "<body>\n" +
                 "<p> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>\n" +
                 "<p>\n" +
-                "<input type=\"button\"  onclick=\"location.href='/hi.htm'\" value=\"hi\" >\n" +
-                "<input type=\"button\"  onclick=\"location.href='/lo.htm'\" value=\"lo\" >\n" +
+                "<input type=\"button\"  onclick=\"location.href='/hi'\" value=\"hi\" >\n" +
+                "<input type=\"button\"  onclick=\"location.href='/lo'\" value=\"lo\" >\n" +
                 "</p>\n" +
                 "</body>\n" +
                 "</html>";
