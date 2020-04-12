@@ -15,21 +15,21 @@ public class HiLo {
 
     private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
     private static int current = -1; //number the user has to guess if the next number will be higher or lower than
-    private static boolean needsSetup = true;  
+    private static boolean needsSetup = true;
 
     @RequestMapping("/")
     @ResponseBody
     String main() {
         if(needsSetup) {
-            //just use 5 to start with out of simplicity 
+            //just use 5 to start with out of simplicity
             current = 5;
             numbers.remove(4); //TODO bug here if I update the elements in the list
             needsSetup = false;
         }
-        
+
         return constructHtml();
     }
-    
+
     @RequestMapping("/hi")
     @ResponseBody
     String hi() {
@@ -40,10 +40,10 @@ public class HiLo {
             response = main();
         }
         else{
-            //Fail 
+            //Fail
             response =  answer + " is not higher than: " + current + ". Unlucky!";
         }
-        return response; 
+        return response;
     }
 
     @RequestMapping("/lo")
@@ -56,10 +56,10 @@ public class HiLo {
             response = main();
         }
         else{
-            //Fail 
+            //Fail
             response =  answer + " is not lower than: " + current + ". Unlucky!";
         }
-        return response; 
+        return response;
     }
 
     private String constructHtml(){
@@ -67,9 +67,9 @@ public class HiLo {
                 "<html>\n" +
                         "<body>\n" +
                         "Remaining numbers: " + Arrays.toString(numbers.toArray()) +
-                        "<p>\n Current number: " + String.valueOf(current) +
-                        "<input type=\"button\"  onclick=\"location.href='/hi.htm'\" value=\"hi\" >\n" +
-                        "<input type=\"button\"  onclick=\"location.href='/lo.htm'\" value=\"lo\" >\n" +
+                        "<p>\n Current number: " + String.valueOf(current) + "</p>" +
+                        "<input type=\"button\"  onclick=\"location.href='/hi'\" value=\"hi\" >\n" +
+                        "<input type=\"button\"  onclick=\"location.href='/lo'\" value=\"lo\" >\n" +
                         "</p>\n" +
                         "</body>\n" +
                         "</html>";
@@ -86,7 +86,7 @@ public class HiLo {
 
         return nextNum;
     }
-    
+
     public static void main(String[] args) {
         SpringApplication.run(HiLo.class, args);
     }
