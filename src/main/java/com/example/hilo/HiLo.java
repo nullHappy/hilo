@@ -50,7 +50,8 @@ public class HiLo {
         }
         else{
             //Fail
-            response =  answer + " is not higher than: " + current + ". Unlucky!";
+            response =  answer + " is not higher than: " + current + ". Unlucky!" +
+                    "<input type=\"button\"  onclick=\"location.href='/reset'\" value=\"reset\" >\n";
         }
         return response;
     }
@@ -66,7 +67,8 @@ public class HiLo {
         }
         else{
             //Fail
-            response =  answer + " is not lower than: " + current + ". Unlucky!";
+            response =  answer + " is not lower than: " + current + ". Unlucky!" +  
+                    "<input type=\"button\"  onclick=\"location.href='/reset'\" value=\"reset\" >\n";
         }
         return response;
     }
