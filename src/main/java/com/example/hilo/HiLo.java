@@ -67,7 +67,7 @@ public class HiLo {
                 "<html>\n" +
                         "<body>\n" +
                         "Remaining numbers: " + Arrays.toString(numbers.toArray()) +
-                        "<p>\n Current number: " + String.valueOf(current) + "</p>" +
+                        "<p>\n Current number: " + String.valueOf(current) + "</p></br>" +
                         "<input type=\"button\"  onclick=\"location.href='/hi'\" value=\"hi\" >\n" +
                         "<input type=\"button\"  onclick=\"location.href='/lo'\" value=\"lo\" >\n" +
                         "</p>\n" +
