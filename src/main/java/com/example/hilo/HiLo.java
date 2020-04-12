@@ -14,8 +14,17 @@ import java.util.Random;
 public class HiLo {
 
     private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-    private static int current = -1; //number the user has to guess if the next number will be higher or lower than
+    private static int current = 5; //number the user has to guess if the next number will be higher or lower than
     private static boolean needsSetup = true;
+
+    @RequestMapping("/reset")
+    @ResponseBody
+    void reset(){
+        numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        current = 5;
+        needsSetup = true;
+        main();
+    }
 
     @RequestMapping("/")
     @ResponseBody
@@ -70,6 +79,7 @@ public class HiLo {
                         "<p>\n Current number: " + String.valueOf(current) + "</p></br>" +
                         "<input type=\"button\"  onclick=\"location.href='/hi'\" value=\"hi\" >\n" +
                         "<input type=\"button\"  onclick=\"location.href='/lo'\" value=\"lo\" >\n" +
+                        "<input type=\"button\"  onclick=\"location.href='/reset'\" value=\"reset\" >\n" +
                         "</p>\n" +
                         "</body>\n" +
                         "</html>";
