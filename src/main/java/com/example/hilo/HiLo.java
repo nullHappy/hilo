@@ -9,10 +9,46 @@ import org.springframework.stereotype.*;
 @SpringBootApplication
 public class HiLo {
 
+    //TODO - an array probably isn't the best data structure for this (ordering and performance)
+    private static int [] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    private static int answer = -1;
+
     @RequestMapping("/")
     @ResponseBody
-    String home() {
-      return "Hello World!";
+    String main() {
+        //BACKEND stuff
+        //setup array with guesses
+        //setup answer and remove it
+
+        //Display stuff
+
+        //String hiButton = "";
+        //String loButton = "";
+
+        String uglySource =
+                "<html>\n" +
+                "<body>\n" +
+                "<p> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>\n" +
+                "<p>\n" +
+                "<input type=\"button\"  onclick=\"location.href='/hi.htm'\" value=\"hi\" >\n" +
+                "<input type=\"button\"  onclick=\"location.href='/lo.htm'\" value=\"lo\" >\n" +
+                "</p>\n" +
+                "</body>\n" +
+                "</html>";
+
+        return uglySource;
+    }
+
+    @RequestMapping("/hi")
+    @ResponseBody
+    String hi() {
+        return "Hi!";
+    }
+
+    @RequestMapping("/lo")
+    @ResponseBody
+    String lo() {
+        return "Lo";
     }
 
     public static void main(String[] args) {
