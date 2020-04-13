@@ -107,8 +107,8 @@ public class HiLo {
 
         return nextNum;
     }
-    
-    private int checkHighScore(int score){
+
+    private void checkHighScore(int score){
         if(score > highScore){
             highScore = score;
         }
