@@ -12,9 +12,8 @@ import java.util.Random;
 @Controller
 @SpringBootApplication
 public class HiLo {
-
-    //TOOD: add the numbers 1 - 20 back in
-    private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+    
+    private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
     private static int score = 0;
     private static int highScore = 0;
     private static int current = 5; //number the user has to guess if the next number will be higher or lower than
@@ -23,8 +22,7 @@ public class HiLo {
     @ResponseBody
     void reset(){
         //TODO: comment this back in
-        //numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
-        numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+        numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
         current = 5;
         score = 0;
         needsSetup = true;
@@ -39,11 +37,7 @@ public class HiLo {
             numbers.remove(4); //TODO bug here if I update the elements in the list
             needsSetup = false;
         }
-
-        if(numbers.size() == 0){
-            return getSuccessMessage();
-        }
-
+        
         return constructHtml();
     }
 
