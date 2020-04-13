@@ -12,7 +12,7 @@ import java.util.Random;
 @Controller
 @SpringBootApplication
 public class HiLo {
-    
+
     private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
     private static int score = 0;
     private static int highScore = 0;
@@ -49,7 +49,8 @@ public class HiLo {
         if (answer > current){
             current = answer;
             score ++;
-            if (numbers.size() <= 1){
+           // if (numbers.size() <= 1){
+            if(true){ //TODO: remove
                 response =  getWinConditionMessage();
             }
             else {
