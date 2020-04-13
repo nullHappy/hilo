@@ -54,7 +54,7 @@ public class HiLo {
         else{
             //Fail
             response =  answer + " is not higher than: " + current + ". Unlucky!";
-            checkHighScore();
+            checkHighScore(score);
             reset();
         }
         return response;
@@ -73,7 +73,7 @@ public class HiLo {
         else{
             //Fail
             response =  answer + " is not lower than: " + current + ". Unlucky!";
-            checkHighScore();
+            checkHighScore(score);
             reset();
         }
         return response;
