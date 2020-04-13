@@ -82,7 +82,7 @@ public class HiLo {
         String rawSource =
                 "<html>\n" +
                   "<body>\n" +
-                     "<p>\n Current number: " + String.valueOf(current) +
+                     "<p>\n Current number: " + String.valueOf(current) + "</br>" +
                         "Remaining numbers: " + Arrays.toString(numbers.toArray()) + "</br>" +
                         "<input type=\"button\"  onclick=\"location.href='/hi'\" value=\"higher\" >\n" +
                         "<input type=\"button\"  onclick=\"location.href='/lo'\" value=\"lower\" >\n" +
