@@ -49,8 +49,8 @@ public class HiLo {
         if (answer > current){
             current = answer;
             score ++;
-           // if (numbers.size() <= 1){
-            if(true){ //TODO: remove
+            if (numbers.size() <= 1){
+            
                 response =  getWinConditionMessage();
             }
             else {
