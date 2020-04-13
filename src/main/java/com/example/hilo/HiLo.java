@@ -13,7 +13,8 @@ import java.util.Random;
 @SpringBootApplication
 public class HiLo {
 
-    private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+    //TOOD: add the numbers 1 - 20 back in
+    private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
     private static int score = 0;
     private static int highScore = 0;
     private static int current = 5; //number the user has to guess if the next number will be higher or lower than
@@ -21,7 +22,9 @@ public class HiLo {
 
     @ResponseBody
     void reset(){
-        numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+        //TODO: comment this back in
+        //numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+        numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
         current = 5;
         score = 0;
         needsSetup = true;
@@ -35,6 +38,10 @@ public class HiLo {
             current = 5;
             numbers.remove(4); //TODO bug here if I update the elements in the list
             needsSetup = false;
+        }
+
+        if(numbers.size() == 0){
+            return getSuccessMessage();
         }
 
         return constructHtml();
@@ -52,7 +59,7 @@ public class HiLo {
         }
         else{
             //Fail
-            response =  answer + " is not higher than: " + current + ". Unlucky!" +
+            response =  answer + " is not higher than: " + current + ". Unlucky!</br>" +
                     "<input type=\"button\"  onclick=\"location.href='/'\" value=\"try again\" >\n";
             checkHighScore(score);
             reset();
@@ -64,6 +71,7 @@ public class HiLo {
     @ResponseBody
     String lo() {
         String response = ""; //TODO: this could be more elegant, duplication
+
         int answer = getAndRemoveNumberFromList();
         if (answer < current){
             current = answer;
@@ -72,7 +80,7 @@ public class HiLo {
         }
         else{
             //Fail
-            response =  answer + " is not lower than: " + current + ". Unlucky!" +
+            response =  answer + " is not lower than: " + current + ". Unlucky!</br>" +
                     "<input type=\"button\"  onclick=\"location.href='/'\" value=\"try again\" >\n";
             checkHighScore(score);
             reset();
@@ -98,7 +106,6 @@ public class HiLo {
     }
 
     private int getAndRemoveNumberFromList(){
-        //TODO: game breaks if user gets to the win condition....
         Random random = new Random();
         int placeholderIndex = random.nextInt((numbers.size() - 1));
 
@@ -106,6 +113,11 @@ public class HiLo {
         numbers.remove(placeholderIndex);
 
         return nextNum;
+    }
+
+    private String getSuccessMessage(){
+       String successMessage ="<html><p>CONGRATULATIONS!!!</p></html>";
+               return successMessage;
     }
 
     private void checkHighScore(int score){
