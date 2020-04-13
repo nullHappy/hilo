@@ -37,7 +37,7 @@ public class HiLo {
             numbers.remove(4); //TODO bug here if I update the elements in the list
             needsSetup = false;
         }
-        
+
         return constructHtml();
     }
 
@@ -49,7 +49,12 @@ public class HiLo {
         if (answer > current){
             current = answer;
             score ++;
-            response = main();
+            if (numbers.size() <= 1){
+                response =  getWinConditionMessage();
+            }
+            else {
+                response = main();
+            }
         }
         else{
             //Fail
@@ -70,7 +75,12 @@ public class HiLo {
         if (answer < current){
             current = answer;
             score ++;
-            response = main();
+            if (numbers.size() <= 1){
+                response =  getWinConditionMessage();
+            }
+            else {
+                response = main();
+            }
         }
         else{
             //Fail
@@ -109,7 +119,7 @@ public class HiLo {
         return nextNum;
     }
 
-    private String getSuccessMessage(){
+    private String getWinConditionMessage(){
        String successMessage ="<html><p>CONGRATULATIONS!!!</p></html>";
                return successMessage;
     }
