@@ -12,32 +12,32 @@ import java.util.Random;
 @Controller
 @SpringBootApplication
 public class HiLo {
-    
+
     //Variables & Constants ==============================================
     private static final int STARTING_NUMBER = 5; //arbitrary, but picked a number that gives user >50% chance of being correct on first go
     private static final String HI_ACTION = ">";
     private static final String LO_ACTiON = "<";
     private static int highScore = 0; //todo: could add a scheduler to reset this at midnight and change to daily high-score
-    
+
     private static boolean resetGameData = true; //resets the 3 variables below, with the intention of starting a new game
     private ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
     private static int score = 0;
     private static int current = STARTING_NUMBER; //user has to guess if the next number will be higher or lower than this
 
     //Mappings ===========================================================
-    
+
     @RequestMapping("/")
     @ResponseBody
     String main() {
         if(resetGameData) {
             current = STARTING_NUMBER;
-            numbers.remove(STARTING_NUMBER - 1); 
+            numbers.remove(STARTING_NUMBER - 1);
             resetGameData = false;
         }
 
         return constructHtml();
     }
-    
+
     @RequestMapping("/hi")
     @ResponseBody
     String hi() {
@@ -51,21 +51,26 @@ public class HiLo {
     }
 
     //Game logic =========================================================
-    
+
     private String constructHtml(){
         String rawSource =
+
                 "<html>\n" +
-                  "<body>\n" +
-                     "<p>\n Current number: " + String.valueOf(current) + "</br>" +
-                        "Remaining numbers: " + Arrays.toString(numbers.toArray()) + "</br>" +
-                        "<input type=\"button\"  onclick=\"location.href='/hi'\" value=\"higher\" >\n" +
-                        "<input type=\"button\"  onclick=\"location.href='/lo'\" value=\"lower\" >\n" +
-                        "</br>" +
-                        "</br> Current score: " + String.valueOf(score)  +
-                        "</br> HIGH SCORE: " + String.valueOf(highScore) +
-                     "</p>\n" +
-                  "</body>\n" +
-                "</html>";
+                        "<body>\n" +
+                            "<p>Simple higher or lower game</br>" +
+                              "To play: guess whether the next number taken at random from the pool will be higher or lower than the current number</br>" +
+                              "Win condition: keep guessing higher or lower until there are no more numbers in the pool.</br></br></br> " +
+                              "\n Current number: " + String.valueOf(current) + "</br>" +
+                              "Remaining numbers: " + Arrays.toString(numbers.toArray()) + "</br>" +
+                              "<input type=\"button\"  onclick=\"location.href='/hi'\" value=\"higher\" >\n" +
+                              "<input type=\"button\"  onclick=\"location.href='/lo'\" value=\"lower\" >\n" +
+                              "</br>" +
+                              "</br> Current score: " + String.valueOf(score)  +
+                              "</br> HIGH SCORE: " + String.valueOf(highScore) +
+                            "</p>\n" +
+                        "</body>\n" +
+                 "</html>";
+        
         return rawSource;
     }
 
@@ -75,7 +80,7 @@ public class HiLo {
         int answer = getAndRemoveNumberFromList();
 
         if(HI_ACTION.equals(action)){
-            if (answer > current){isSuccess = true;} 
+            if (answer > current){isSuccess = true;}
         }
         else if(LO_ACTiON.equals(action)){
             if (answer < current){isSuccess = true;}
