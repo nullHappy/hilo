@@ -78,7 +78,7 @@ public class HiLo {
             if (answer > current){isSuccess = true;} 
         }
         else if(LO_ACTiON.equals(action)){
-            if (answer > current){isSuccess = true;}
+            if (answer < current){isSuccess = true;}
         }
         else{
             //action not recognised...
